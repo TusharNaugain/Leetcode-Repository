@@ -1,86 +1,29 @@
-class Node {
-    int data;
-    Node next;
-    Node(int data){
-        this.data = data;
-        this.next=null;
-    }
-}
 class MyLinkedList {
-    int size;
-    Node temp;
-
+    List<Integer> list;
     public MyLinkedList() {
-        temp=new Node(-1);
-        size=0;
+        list = new ArrayList<>();
     }
     
     public int get(int index) {
-        if(index>=size){
-            return -1;
-        }
-
-        Node curr=temp;
-        for(int i=0;i<=index;i++){
-            curr=curr.next;
-        }
-        return curr.data;
+        if(index>=list.size()) return -1;
+        return list.get(index);
     }
     
     public void addAtHead(int val) {
-
-        Node node=new Node(val);
-        node.next=temp.next;
-        temp.next=node;
-        size++;
+        list.add(0,val);
     }
     
     public void addAtTail(int val) {
-        Node node=new Node(val);
-        Node curr=temp;
-        for(int i=0;i<size;i++){
-            curr=curr.next;
-        }
-        curr.next=node;
-        size++;
+        list.add(val);
     }
     
     public void addAtIndex(int index, int val) {
-        
-        if(index>size) return;
-
-        Node node=new Node(val);
-        Node curr=temp;
-
-        for(int i=0;i<index;i++){
-            curr=curr.next;
-        }
-        node.next=curr.next;
-        curr.next=node;
-        size++;
-
+        if(index>list.size()) return;
+        index = Math.max(0, index);
+        list.add(index,val);
     }
     
     public void deleteAtIndex(int index) {
-
-        if(index>=size) return;
-        Node curr=temp;
-
-        for(int i=0;i<index;i++){
-            curr=curr.next;
-        }
-        curr.next=curr.next.next;
-        size--;
-        
+        if(list.size()>index) list.remove(index);
     }
 }
-
-/**
- * Your MyLinkedList object will be instantiated and called as such:
- * MyLinkedList obj = new MyLinkedList();
- * int param_1 = obj.get(index);
- * obj.addAtHead(val);
- * obj.addAtTail(val);
- * obj.addAtIndex(index,val);
- * obj.deleteAtIndex(index);
- */
