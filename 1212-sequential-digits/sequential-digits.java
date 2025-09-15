@@ -4,15 +4,15 @@ class Solution {
         for(int i = 1; i<=9; i++){
             int n = i;
             int next = i+1;
-            while(n<=high && next<=9){
-                n = n*10+next;
-                if(n>=low && n<=high){
-                    res.add(n);
-                }
-                next++;
-            }
+        while(n <= high && next<= 9)  {
+            n=n*10+next;
+        if(low<=n && high >= n){
+            res.add(n);
         }
-            res.sort(null);
-            return res;
-}
+        next++;
+    }
+        }
+        res.sort(null);
+        return res;
+    }
 }
